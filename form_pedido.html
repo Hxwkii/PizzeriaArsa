@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZERÍA ARSA - Formulario de pedido</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-grid">
+        <header class="header">
+            <a class="logo" href="index.html"><span>🍕</span> PIZZERÍA ARSA</a>
+            <nav class="nav">
+                <a href="index.html">Inicio</a>
+                <a href="menu.html">Menú</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a class="activo" href="form_pedido.html">Pedido</a>
+                <a href="pedidos.html">Pedidos</a>
+                <a href="login.html">Login</a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="seccion">
+                <h1>Formulario de pedido</h1>
+                <p>Completa tus datos y selecciona los productos que deseas rescatar.</p>
+            </section>
+
+            <section>
+                <form class="seccion formulario" action="pedidos.html" method="get">
+                    <h2>Datos del cliente</h2>
+                    <div class="campo">
+                        <label for="cliente">Nombre del cliente</label>
+                        <input type="text" id="cliente" name="cliente" placeholder="Ingrese su nombre" required>
+                    </div>
+                    <div class="campo">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Ingrese su dirección" required>
+                    </div>
+                    <div class="campo">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
+                    </div>
+                    <div class="campo">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+                    </div>
+
+                    <h2>Selección de platos</h2>
+                    <div class="check-grid">
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Pepperoni"> Pizza Pepperoni</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Hawaiana"> Pizza Hawaiana</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Americana"> Pizza Americana</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Vegetariana"> Pizza Vegetariana</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Suprema"> Pizza Suprema</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Meat Lovers"> Pizza Meat Lovers</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza 4 Quesos"> Pizza 4 Quesos</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Continental"> Pizza Continental</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pizza Napolitana"> Pizza Napolitana</label>
+                        <label class="check-item"><input type="checkbox" name="producto" value="Pan al Ajo"> Pan al Ajo</label>
+                    </div>
+                    <button type="submit">Enviar pedido</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="footer"><p>PIZZERÍA ARSA - Formulario de pedido</p></footer>
+    </div>
+</body>
+</html>
