@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIZZERÍA ARSA - Inicio</title>
+    <title>PIZZERIA ARSA - Inicio</title>
     <link rel="stylesheet" href="styles.css">
-</head> 
+</head>
 <body>
     <div class="page-grid">
         <header class="header">
-            <a class="logo" href="index.html"><span>🍕</span> PIZZERÍA ARSA</a>
+            <a class="logo" href="index.html"><span>ARSA</span> PIZZERIA ARSA</a>
             <nav class="nav">
                 <a class="activo" href="index.html">Inicio</a>
-                <a href="menu.html">Menú</a>
+                <a href="menu.html">Menu</a>
                 <a href="ofertas.html">Ofertas</a>
                 <a href="form_pedido.html">Pedido</a>
                 <a href="pedidos.html">Pedidos</a>
@@ -24,24 +24,30 @@
             <section class="hero">
                 <div>
                     <p class="etiqueta">Rescate de alimentos</p>
+                    <p id="saludoUsuario" class="mensaje" hidden></p>
                     <h1>Pizzas deliciosas a menor precio</h1>
-                    <p>PIZZERÍA ARSA ayuda a reducir el desperdicio de alimentos ofreciendo pizzas preparadas en exceso o pedidos no recogidos a precios accesibles.</p>
+                    <p>PIZZERIA ARSA ayuda a reducir el desperdicio de alimentos ofreciendo pizzas preparadas en exceso, productos proximos a vencer o pedidos no recogidos a precios accesibles.</p>
                     <br>
-                    <a class="boton" href="menu.html">Ver menú disponible</a>
+                    <a class="boton" href="menu.html">Ver menu disponible</a>
                     <a class="boton boton-secundario" href="ofertas.html">Ver ofertas</a>
                 </div>
                 <div class="hero-card urgente">
-                    <h2>Oferta destacada</h2>
+                    <h2 id="ofertaDestacada">Oferta destacada</h2>
                     <p>Hasta 70% de descuento en productos seleccionados.</p>
-                    <p>Compra rápido y ayuda a evitar que comida en buen estado sea desperdiciada.</p>
+                    <p>Compra rapido y ayuda a evitar que comida en buen estado sea desperdiciada.</p>
+                    <button type="button" onclick="cambiarOfertaInicio()">Cambiar oferta</button>
                 </div>
             </section>
 
             <section class="seccion seccion-resumen">
                 <div>
-                    <p class="etiqueta">¿Cómo funciona?</p>
+                    <p class="etiqueta">Como funciona?</p>
                     <h2>Compra, ahorra y ayuda a reducir el desperdicio</h2>
                     <p>Consulta las pizzas disponibles, revisa las ofertas de rescate y realiza tu pedido de forma sencilla.</p>
+                </div>
+                <div class="mini-panel">
+                    <span>Impacto dinamico</span>
+                    <p id="impactoInicio">Calculando comidas rescatadas...</p>
                 </div>
                 <div class="pasos">
                     <article>
@@ -61,9 +67,9 @@
 
             <section class="grid-tres">
                 <article class="tarjeta">
-                    <h3>Menú de comidas</h3>
-                    <p>Consulta pizzas y acompañamientos disponibles con precio original y precio de rescate.</p>
-                    <a class="boton" href="menu.html">Ver menú</a>
+                    <h3>Menu de comidas</h3>
+                    <p>Consulta pizzas y acompanamientos disponibles con precio original y precio de rescate.</p>
+                    <a class="boton" href="menu.html">Ver menu</a>
                 </article>
                 <article class="tarjeta">
                     <h3>Formulario de pedido</h3>
@@ -83,5 +89,6 @@
             <p>Redes sociales: Facebook / Instagram / TikTok</p>
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

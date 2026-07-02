@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIZZERÍA ARSA - Iniciar sesión</title>
+    <title>PIZZERIA ARSA - Iniciar sesion</title>
     <link rel="stylesheet" href="styles.css">
-</head> 
+</head>
 <body>
     <main class="auth-layout">
         <section class="auth-info">
-            <a class="logo" href="index.html"><span>🍕</span> PIZZERÍA ARSA</a>
+            <a class="logo" href="index.html"><span>ARSA</span> PIZZERIA ARSA</a>
             <h1>Bienvenido nuevamente</h1>
-            <p>Ingresa para revisar el menú, consultar las ofertas de rescate y realizar pedidos disponibles.</p>
+            <p>Ingresa para revisar el menu, consultar las ofertas de rescate y realizar pedidos disponibles.</p>
             <a class="boton boton-secundario" href="index.html">Volver al inicio</a>
         </section>
 
         <section class="auth-card">
-            <h2>Iniciar sesión</h2>
-            <form class="formulario" action="index.html">
+            <h2>Iniciar sesion</h2>
+            <form class="formulario" action="index.html" onsubmit="return validarLogin(event)">
                 <div class="campo">
                     <label for="usuario">Usuario</label>
                     <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" required>
                 </div>
                 <div class="campo">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                    <label for="password">Contrasena</label>
+                    <input type="password" id="password" name="password" placeholder="Ingrese su contrasena" required>
                 </div>
-                <button type="submit">Ingresar</button>
+                <label class="check-item">
+                    <input type="checkbox" id="verPasswordLogin" onchange="mostrarOcultarPassword('password', 'verPasswordLogin')">
+                    Mostrar contrasena
+                </label>
+                <p id="loginMensaje" class="mensaje" hidden></p>
+                <button type="submit" onclick="marcarIntentoLogin()">Ingresar</button>
             </form>
-            <p>¿No tienes cuenta? <a class="etiqueta" href="registrar.html">Regístrate aquí</a></p>
+            <p>No tienes cuenta? <a class="etiqueta" href="registrar.html">Registrate aqui</a></p>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIZZERÍA ARSA - Menú</title>
+    <title>PIZZERIA ARSA - Menu</title>
     <link rel="stylesheet" href="styles.css">
-</head> 
+</head>
 <body>
     <div class="page-grid">
         <header class="header">
-            <a class="logo" href="index.html"><span>🍕</span> PIZZERÍA ARSA</a>
+            <a class="logo" href="index.html"><span>ARSA</span> PIZZERIA ARSA</a>
             <nav class="nav">
                 <a href="index.html">Inicio</a>
-                <a class="activo" href="menu.html">Menú</a>
+                <a class="activo" href="menu.html">Menu</a>
                 <a href="ofertas.html">Ofertas</a>
                 <a href="form_pedido.html">Pedido</a>
                 <a href="pedidos.html">Pedidos</a>
@@ -22,25 +22,101 @@
 
         <main class="main">
             <section class="seccion">
-                <h1>Menú de productos disponibles</h1>
+                <h1>Menu de productos disponibles</h1>
                 <p>Productos ofrecidos a precio de rescate para reducir el desperdicio de alimentos.</p>
+                <div class="controles">
+                    <div class="campo">
+                        <label for="buscarMenu">Buscar producto</label>
+                        <input type="text" id="buscarMenu" placeholder="Ejemplo: pepperoni" oninput="filtrarMenu()" onkeyup="filtrarMenu()">
+                    </div>
+                    <div class="campo">
+                        <label for="filtroMenu">Filtrar por precio</label>
+                        <select id="filtroMenu" onchange="filtrarMenu()">
+                            <option value="todos">Todos</option>
+                            <option value="menor20">Menos de S/ 20.00</option>
+                            <option value="mayor20">S/ 20.00 o mas</option>
+                        </select>
+                    </div>
+                </div>
+                <p id="menuMensaje" class="mensaje" hidden></p>
             </section>
 
             <section class="grid-tres">
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Pepperoni</h3><p>Clásica con rodajas de pepperoni.</p><div class="precio"><span class="precio-original">S/ 40.00</span><span class="precio-descuento">S/ 20.00</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Hawaiana</h3><p>Jamón y piña seleccionada.</p><div class="precio"><span class="precio-original">S/ 38.00</span><span class="precio-descuento">S/ 19.00</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Americana</h3><p>Jamón y queso mozzarella.</p><div class="precio"><span class="precio-original">S/ 35.00</span><span class="precio-descuento">S/ 17.50</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Vegetariana</h3><p>Pimientos, cebolla y aceitunas negras.</p><div class="precio"><span class="precio-original">S/ 42.00</span><span class="precio-descuento">S/ 21.00</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Suprema</h3><p>Carne, vegetales y pepperoni mixto.</p><div class="precio"><span class="precio-original">S/ 50.00</span><span class="precio-descuento">S/ 25.00</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Meat Lovers</h3><p>Embutidos, carne y tocino.</p><div class="precio"><span class="precio-original">S/ 55.00</span><span class="precio-descuento">S/ 27.50</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza 4 Quesos</h3><p>Mozzarella, edam, parmesano y queso azul.</p><div class="precio"><span class="precio-original">S/ 48.00</span><span class="precio-descuento">S/ 24.00</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Continental</h3><p>Pollo deshilachado y champiñones.</p><div class="precio"><span class="precio-original">S/ 45.00</span><span class="precio-descuento">S/ 22.50</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pizza Napolitana</h3><p>Tomate fresco, albahaca y ajo.</p><div class="precio"><span class="precio-original">S/ 38.00</span><span class="precio-descuento">S/ 19.00</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
-                <article class="tarjeta"><span class="etiqueta">50% descuento</span><h3>Pan al Ajo Arsa</h3><p>Porción de 6 unidades con queso.</p><div class="precio"><span class="precio-original">S/ 12.00</span><span class="precio-descuento">S/ 6.00</span></div><a class="boton" href="form_pedido.html">Añadir</a></article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Pepperoni" data-precio="20">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Pepperoni</h3>
+                    <p>Clasica con rodajas de pepperoni.</p>
+                    <div class="precio"><span class="precio-original">S/ 40.00</span><span class="precio-descuento">S/ 20.00</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Pepperoni" onclick="seleccionarProducto('Pizza Pepperoni')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Hawaiana" data-precio="19">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Hawaiana</h3>
+                    <p>Jamon y pina seleccionada.</p>
+                    <div class="precio"><span class="precio-original">S/ 38.00</span><span class="precio-descuento">S/ 19.00</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Hawaiana" onclick="seleccionarProducto('Pizza Hawaiana')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Americana" data-precio="17.5">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Americana</h3>
+                    <p>Jamon y queso mozzarella.</p>
+                    <div class="precio"><span class="precio-original">S/ 35.00</span><span class="precio-descuento">S/ 17.50</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Americana" onclick="seleccionarProducto('Pizza Americana')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Vegetariana" data-precio="21">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Vegetariana</h3>
+                    <p>Pimientos, cebolla y aceitunas negras.</p>
+                    <div class="precio"><span class="precio-original">S/ 42.00</span><span class="precio-descuento">S/ 21.00</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Vegetariana" onclick="seleccionarProducto('Pizza Vegetariana')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Suprema" data-precio="25">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Suprema</h3>
+                    <p>Carne, vegetales y pepperoni mixto.</p>
+                    <div class="precio"><span class="precio-original">S/ 50.00</span><span class="precio-descuento">S/ 25.00</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Suprema" onclick="seleccionarProducto('Pizza Suprema')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Meat Lovers" data-precio="27.5">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Meat Lovers</h3>
+                    <p>Embutidos, carne y tocino.</p>
+                    <div class="precio"><span class="precio-original">S/ 55.00</span><span class="precio-descuento">S/ 27.50</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Meat%20Lovers" onclick="seleccionarProducto('Pizza Meat Lovers')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza 4 Quesos" data-precio="24">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza 4 Quesos</h3>
+                    <p>Mozzarella, edam, parmesano y queso azul.</p>
+                    <div class="precio"><span class="precio-original">S/ 48.00</span><span class="precio-descuento">S/ 24.00</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%204%20Quesos" onclick="seleccionarProducto('Pizza 4 Quesos')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Continental" data-precio="22.5">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Continental</h3>
+                    <p>Pollo deshilachado y champinones.</p>
+                    <div class="precio"><span class="precio-original">S/ 45.00</span><span class="precio-descuento">S/ 22.50</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Continental" onclick="seleccionarProducto('Pizza Continental')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pizza Napolitana" data-precio="19">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pizza Napolitana</h3>
+                    <p>Tomate fresco, albahaca y ajo.</p>
+                    <div class="precio"><span class="precio-original">S/ 38.00</span><span class="precio-descuento">S/ 19.00</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pizza%20Napolitana" onclick="seleccionarProducto('Pizza Napolitana')">Anadir</a>
+                </article>
+                <article class="tarjeta menu-card" data-nombre="Pan al Ajo" data-precio="6">
+                    <span class="etiqueta">50% descuento</span>
+                    <h3>Pan al Ajo Arsa</h3>
+                    <p>Porcion de 6 unidades con queso.</p>
+                    <div class="precio"><span class="precio-original">S/ 12.00</span><span class="precio-descuento">S/ 6.00</span></div>
+                    <a class="boton" href="form_pedido.html?producto=Pan%20al%20Ajo" onclick="seleccionarProducto('Pan al Ajo')">Anadir</a>
+                </article>
             </section>
         </main>
 
-        <footer class="footer"><p>PIZZERÍA ARSA - Menú de comidas rescatadas</p></footer>
+        <footer class="footer"><p>PIZZERIA ARSA - Menu de comidas rescatadas</p></footer>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
